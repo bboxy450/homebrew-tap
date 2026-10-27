@@ -13,8 +13,8 @@ cask "bboxy450-term" do
   binary "#{appdir}/bboxy450-term.app/Contents/MacOS/bboxy450-term"
 
   # Signed with an Apple Development certificate, not yet notarized.
-  postflight do
-    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/bboxy450-term.app"]
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/bboxy450-term.app"]
   end
 
   zap trash: [
