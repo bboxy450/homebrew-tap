@@ -12,10 +12,11 @@ cask "bboxy450-term" do
   app "bboxy450-term.app"
   binary "#{appdir}/bboxy450-term.app/Contents/MacOS/bboxy450-term"
 
-  # Signed with an Apple Development certificate, not yet notarized.
-  postflight_steps do
-    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/bboxy450-term.app"]
-  end
+  caveats <<~EOS
+    bboxy450-term is signed with an Apple Development certificate and is not yet notarized.
+    Before the first launch, allow it once:
+      xattr -dr com.apple.quarantine #{appdir}/bboxy450-term.app
+  EOS
 
   zap trash: [
     "~/Library/Application Support/bboxy450-term",
