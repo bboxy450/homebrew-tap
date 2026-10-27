@@ -6,7 +6,9 @@ Homebrew tap for bboxy450 software.
 
 ```sh
 brew tap bboxy450/tap
+brew trust --tap bboxy450/tap   # Homebrew loads third-party taps only once trusted
 brew install --cask bboxy450-term
+xattr -dr com.apple.quarantine /Applications/bboxy450-term.app   # once: not yet notarized
 ```
 
 | Cask | What it is |
